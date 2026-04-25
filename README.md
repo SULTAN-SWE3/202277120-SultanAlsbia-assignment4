@@ -87,13 +87,10 @@ Full details are documented in [docs/ai-usage-report.md](docs/ai-usage-report.md
 ## Documentation
 - [Technical Documentation](docs/technical-documentation.md)
 - [AI Usage Report](docs/ai-usage-report.md)
-- [Presentation Script](presentation/presentation-script.md)
-- [Slides Outline](presentation/slides-outline.md)
 
 ## Presentation Notes
 - `presentation/slides.pdf` contains a simple generated slide deck based on the outline.
-- `presentation/presentation-script.md` contains the full 5-7 minute speaking script.
-- Record your final screen demo with your own voice and replace `presentation/demo-video.mp4` before submitting.
+- This is final screen demo `presentation/demo-video.mp4`
 
 ## Author
 Sultan Alsbia
