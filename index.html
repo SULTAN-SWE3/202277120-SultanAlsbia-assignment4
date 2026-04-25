@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Assignment 3 portfolio for Sultan Alsbia with API integration, advanced filtering, saved state, and client-side validation."
+  />
+  <title>Sultan Alsbia | Assignment 3 Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-shell">
+      <a class="brand" href="#top">
+        <span class="brand-mark">SA</span>
+        <span>
+          <strong>Sultan Alsbia</strong>
+          <small>Assignment 3 Portfolio</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#github">GitHub Feed</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-tools">
+        <button id="welcomeToggleBtn" class="ghost-button" type="button" aria-expanded="true">
+          Hide Welcome
+        </button>
+        <button id="themeBtn" class="primary-button" type="button" aria-label="Toggle color theme">
+          Dark Mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-panel reveal">
+      <div class="hero-copy">
+        <p class="section-kicker">Advanced Functionality</p>
+        <h1>Portfolio website upgraded with API data, multi-step logic, and saved user state.</h1>
+        <p class="hero-text">
+          This version builds on my previous portfolio by adding GitHub API integration, project filtering and sorting, contact validation rules,
+          visitor personalization, and performance-focused front-end improvements.
+        </p>
+
+        <div class="hero-stats">
+          <article>
+            <span class="stat-label">Visitor Timer</span>
+            <strong id="visitTimer">00:00</strong>
+          </article>
+          <article>
+            <span class="stat-label">Selected Track</span>
+            <strong id="savedTrackLabel">Not selected yet</strong>
+          </article>
+          <article>
+            <span class="stat-label">Theme State</span>
+            <strong id="themeStatus">Light</strong>
+          </article>
+        </div>
+      </div>
+
+      <aside id="welcomePanel" class="welcome-card">
+        <p class="section-kicker">Remembered State</p>
+        <h2>Personalize your visit</h2>
+        <label for="visitorName">Visitor name</label>
+        <div class="inline-form">
+          <input id="visitorName" type="text" maxlength="30" placeholder="Enter your name" />
+          <button id="saveNameBtn" class="primary-button" type="button">Save</button>
+        </div>
+        <p id="greetingMessage" class="status-text" aria-live="polite">Welcome to my portfolio.</p>
+        <p class="helper-text">Your name, theme, selected track, and welcome panel state are saved in local storage.</p>
+      </aside>
+    </section>
+
+    <section class="content-panel reveal">
+      <div class="section-heading">
+        <p class="section-kicker">Conditional Content</p>
+        <h2>Choose your viewer track</h2>
+        <p>Selecting a track changes the recommendation message and highlights the projects that best match that level.</p>
+      </div>
+
+      <div class="track-selector" role="radiogroup" aria-label="Project level selector">
+        <button class="track-button active" type="button" data-track="all" aria-pressed="true">All Visitors</button>
+        <button class="track-button" type="button" data-track="beginner" aria-pressed="false">Beginner</button>
+        <button class="track-button" type="button" data-track="advanced" aria-pressed="false">Advanced</button>
+      </div>
+
+      <div id="trackMessage" class="message-card" aria-live="polite">
+        Viewing all projects. Use the filter and sort controls below to explore the portfolio.
+      </div>
+    </section>
+
+    <section id="projects" class="content-panel reveal">
+      <div class="section-heading">
+        <p class="section-kicker">Complex Logic</p>
+        <h2>Project explorer</h2>
+        <p>Projects can be filtered by category and track, then sorted by date or title using a single shared state object.</p>
+      </div>
+
+      <div class="controls-grid">
+        <label>
+          <span>Category</span>
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+            <option value="web">Web</option>
+            <option value="ui">UI/UX</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Sort by</span>
+          <select id="sortProjects">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="title">Title A-Z</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="projectList" class="project-grid" aria-live="polite"></div>
+      <p id="projectEmptyState" class="empty-state" hidden>No projects match the current filter rules.</p>
+    </section>
+
+    <section id="github" class="content-panel reveal">
+      <div class="section-heading">
+        <p class="section-kicker">API Integration</p>
+        <h2>Latest GitHub repositories</h2>
+        <p>The portfolio fetches public repository data from the GitHub API and shows the latest updated work.</p>
+      </div>
+
+      <div class="api-toolbar">
+        <p class="helper-text">Source: GitHub REST API for user <strong id="githubUsername">sultan-swe3</strong></p>
+        <button id="reloadReposBtn" class="ghost-button" type="button">Reload Repositories</button>
+      </div>
+
+      <div id="repoStatus" class="status-banner">Loading repositories...</div>
+      <div id="repoList" class="repo-grid"></div>
+    </section>
+
+    <section id="contact" class="content-panel reveal">
+      <div class="section-heading">
+        <p class="section-kicker">Validated Input</p>
+        <h2>Contact form</h2>
+        <p>The form only submits after checking required fields, email format, and message length.</p>
+      </div>
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <label for="contactName">Name</label>
+        <input id="contactName" name="name" type="text" placeholder="Your full name" />
+
+        <label for="contactEmail">Email</label>
+        <input id="contactEmail" name="email" type="email" placeholder="name@example.com" />
+
+        <label for="contactReason">Reason</label>
+        <select id="contactReason" name="reason">
+          <option value="">Choose a reason</option>
+          <option value="project">Project collaboration</option>
+          <option value="feedback">Portfolio feedback</option>
+          <option value="question">General question</option>
+        </select>
+
+        <label for="contactMessage">Message</label>
+        <textarea id="contactMessage" name="message" rows="6" placeholder="Write at least 20 characters"></textarea>
+
+        <button class="primary-button" type="submit">Send Message</button>
+        <p id="formFeedback" class="form-feedback" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Sultan Alsbia. Built for SWE363 Assignment 3.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
