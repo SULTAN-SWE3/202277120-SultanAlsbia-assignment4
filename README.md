@@ -1,52 +1,100 @@
-# 202277120-SultanAlsbia-assignment3
+# 202277120-SultanAlsbia-assignment4
 
 ## Project Description
-This project is my Assignment 3 portfolio website for SWE363. It extends the earlier portfolio work with more advanced JavaScript functionality, GitHub API integration, persistent interface state, stronger form validation, and performance-focused front-end improvements.
+This repository contains my SWE363 Assignment 4 personal web application. It builds on the previous portfolio assignment and turns it into a more complete, polished, presentation-ready portfolio website for Sultan Alsbia.
 
-## Features
-- GitHub API integration that fetches and displays my latest public repositories
-- Project explorer with category filtering and multiple sorting options
-- Conditional project recommendations based on selected visitor track
-- Contact form with multi-step validation rules
-- Visit timer that updates while the user stays on the site
-- Saved state using `localStorage` for theme, visitor name, selected track, and welcome panel visibility
-- Responsive layout that works on desktop and mobile screens
+The application showcases my course projects, technical skills, GitHub activity, documentation, AI usage, and final presentation preparation in one responsive static web app.
+
+## Main Features
+- Personal visitor console with saved name, selected viewing goal, and theme preference
+- Responsive portfolio dashboard with assignment readiness checklist
+- Interactive project explorer with category filtering, search, sorting, and project evidence tags
+- Skill matrix with focus filters for frontend, logic, and professional skills
+- GitHub REST API integration that displays latest public repositories
+- Contact form with client-side validation and live message length feedback
+- Documentation hub linking to README, technical documentation, AI usage report, and presentation script
+- Light and dark themes saved with `localStorage`
+- Mobile navigation, accessible form labels, status messages, and reduced-motion support
 
 ## Project Structure
 ```text
-202277120-SultanAlsbia-assignment3/
+202277120-SultanAlsbia-assignment4/
 +-- README.md
 +-- index.html
 +-- css/
-¦   +-- styles.css
+|   +-- styles.css
 +-- js/
-¦   +-- script.js
+|   +-- script.js
 +-- assets/
-¦   +-- images/
+|   +-- images/
+|       +-- project1.png
+|       +-- project2.png
 +-- docs/
-¦   +-- ai-usage-report.md
-¦   +-- technical-documentation.md
+|   +-- ai-usage-report.md
+|   +-- technical-documentation.md
++-- presentation/
+|   +-- slides.pdf
+|   +-- demo-video.mp4
+|   +-- presentation-script.md
+|   +-- slides-outline.md
 +-- .gitignore
 ```
 
-## Setup Instructions
+## How to Run Locally
 1. Clone or download the repository.
-2. Open the project folder in VS Code or another editor.
-3. Run the website by opening `index.html` in a modern browser.
-4. For easier live testing, use a local server such as Live Server.
-5. Make sure the browser has internet access so the GitHub API section can load repository data.
+2. Open the folder `202277120-SultanAlsbia-assignment4`.
+3. Open `index.html` in a modern browser.
+4. For a smoother local development workflow, use the VS Code Live Server extension or any simple static server.
+5. Make sure the browser has internet access if you want the GitHub API section to load live repository data.
+
+## Deployment
+Recommended deployment option: GitHub Pages.
+
+1. Push the repository to GitHub.
+2. Open the repository settings.
+3. Go to **Pages**.
+4. Select the `main` branch and root folder.
+5. Save the settings.
+
+Expected live URL after GitHub Pages is enabled:
+`https://sultan-swe3.github.io/202277120-SultanAlsbia-assignment4/`
 
 ## Technologies Used
 - HTML5
 - CSS3
 - JavaScript
 - GitHub REST API
+- Local Storage
+- Git and GitHub
+
+## Testing Checklist
+- Open the home page and confirm all sections load.
+- Toggle dark mode, refresh, and confirm the theme is saved.
+- Save a visitor name, refresh, and confirm the greeting is restored.
+- Change the viewing goal and confirm the dashboard content updates.
+- Use the project category filter, search field, and sort menu together.
+- Use skill filters and confirm the skill cards update.
+- Reload the GitHub repository feed and confirm success or graceful error handling.
+- Submit the contact form with invalid input and confirm helpful error messages.
+- Submit the contact form with valid input and confirm success feedback.
+- Resize the browser or test on a phone width to verify the responsive layout.
 
 ## AI Usage Summary
-AI tools were used for planning, debugging, refining validation logic, improving structure, and drafting documentation. Full details are available in `docs/ai-usage-report.md`.
+AI tools were used to help plan the Assignment 4 upgrade, review JavaScript logic, improve wording in documentation, and prepare the presentation script. All AI-assisted output was reviewed, edited, and adapted to match the assignment requirements and my own project.
 
-## Optional Deployment
-Demo link: https://sultan-swe3.github.io/202277120-SultanAlsbia-assignment3/
+Full details are documented in [docs/ai-usage-report.md](docs/ai-usage-report.md).
+
+## Documentation
+- [Technical Documentation](docs/technical-documentation.md)
+- [AI Usage Report](docs/ai-usage-report.md)
+- [Presentation Script](presentation/presentation-script.md)
+- [Slides Outline](presentation/slides-outline.md)
+
+## Presentation Notes
+- `presentation/slides.pdf` contains a simple generated slide deck based on the outline.
+- `presentation/presentation-script.md` contains the full 5-7 minute speaking script.
+- Record your final screen demo with your own voice and replace `presentation/demo-video.mp4` before submitting.
 
 ## Author
 Sultan Alsbia
+Student ID: 202277120
